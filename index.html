@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>AngularJS - Trip Subscriber - Using Actively API </title>
+  <meta name="description" content="AngularJS Reference Architecture" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="style.css" rel="stylesheet" />
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.1/angular.min.js"></script>
+  <script src="script.js"></script>
+</head>
+
+<body>
+
+  <!-- Initialize a new AngularJS app and associate it with a module named "instantSearch"-->
+  <div class="search-container" ng-app="instantSearch" ng-controller="InstantSearchController">
+
+    <section id="fromPlace"> 
+      <div class="bar">
+        <!-- Create a binding between the searchString model and the text field -->
+        <input type="text" ng-model="fromSearchString" placeholder="Enter your source city search" />
+      </div>
+
+      <ul>
+        <!-- Render a li element for every entry in the items array. Notice
+           the custom search filter "searchFor". It takes the value of the
+           searchString model as an argument.
+         -->
+        <li ng-repeat="i in items | searchFor:fromSearchString">
+          <a href="{{i.url}}"><img ng-src="{{i.image}}" /></a>
+          <p>{{i.title}}</p>
+        </li>
+      </ul>
+    </section>
+
+    <section id="toPlace"> 
+      <div class="bar">
+        <!-- Create a binding between the searchString model and the text field -->
+        <input type="text" ng-model="toSearchString" placeholder="Enter your destination city search" />
+      </div>
+
+      <ul>
+        <!-- Render a li element for every entry in the items array. Notice
+           the custom search filter "searchFor". It takes the value of the
+           searchString model as an argument.
+         -->
+        <li ng-repeat="i in items | searchFor:toSearchString">
+          <a href="{{i.url}}"><img ng-src="{{i.image}}" /></a>
+          <p>{{i.title}}</p>
+        </li>
+      </ul>
+    </section>
+
+    <section style="clear: both;"></section>
+  </div>
+
+
+
+
+
+  <div class="main-container" ng-controller="RegistrationController">
+      <h1>Trip Subscriber</h1>
+      
+      <div class="row">
+        <div class="col-2">
+          <button ng-class="btn btn-default" ng-click="createNewTripSubscriber()"> 
+            Create New Trip Subscriber 
+          </button>
+        </div>
+        <div class="col-10">
+          
+        </div> 
+      </div>
+
+      <div class="row">
+        <div class="col-2">
+          <button ng-click="createNewTrip()"> Create New Trip </button>
+        </div>
+        <div class="col-10">
+        </div>
+      </div>
+  </div> 
+  
+</body>
+
+</html>
